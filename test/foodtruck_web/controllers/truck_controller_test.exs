@@ -16,6 +16,19 @@ defmodule FoodtruckWeb.TruckControllerTest do
     assert eventually_match(trucks, response)
   end
 
+  test "GET /truck/random?food=noodle", %{conn: conn} do
+    response =
+      conn
+      |> get(~p"/truck/random?food=noodle")
+      |> json_response(200)
+
+    trucks =
+      TruckStore.list()
+      |> TruckRequests.by_food(["noodle"])
+
+    assert eventually_match(trucks, response)
+  end
+
   defp eventually_match(trucks, response) do
     Stream.repeatedly(fn ->
       TruckRequests.random(trucks)

@@ -5,6 +5,9 @@ Write a tiny self-contained Elixir app that uses OTP to handle the data layer an
 Lean towards extremely thin controllers that pull logic from a small core library of composable functions.
 Do this in one weekend, in about 3 hours.
 
+## API
+The api will live at [`localhost:4000/truck/random`](http://localhost:4000/truck/random) it will also accept a filter query string parameter of ?food={food}
+
 ## Overview
 At startup the application consumes a CSV full of food truck data.
 This application that takes a useful subset of that data and stores it in an agent.
